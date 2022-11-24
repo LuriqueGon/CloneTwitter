@@ -1,0 +1,68 @@
+<?php require '../app/View/app/tweetNavBar.phtml';?>
+
+<div class="container mt-5">
+	<div class="row pt-2">
+
+		<?php require '../app/View/app/tweetMenu.phtml';?>
+
+		<div class="col-md-6">
+
+			<div class="row mb-2">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<form method="GET" action="/quem_seguir">
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" name="pesquisarPor" placeholder="Quem você está procurando?">
+									<div class="input-group-append">
+										<button class="btn btn-primary" type="submit">Procurar</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<p><strong>Pesquisando por : </strong> <?php echo $this->view->pesquisa ?></p>
+				</div>
+			</div>
+			<?php 
+			
+				$pesquisarPor = isset($_GET['pesquisarPor']) ? $_GET['pesquisarPor'] : '';
+
+			?>
+			<?php foreach($this->view->usuarios as $usuario){?>
+				<div class="row mb-2">
+					<div class="col">
+
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-6">
+										<?php echo $usuario['nome'] ; ?>
+									</div>
+
+									<div class="col-md-6 d-flex justify-content-end">
+										<div>
+											<?php if($usuario['seguidores_sn'] == 0){ ?>
+												<a href="/acao?action=seguir&id_usuario_seguir=<?php echo $usuario['id'] ; ?>&pesquisarPor=<?php echo $pesquisarPor ; ?>" class="btn btn-success">Seguir</a>
+											<?php }else {?>
+												<a href="/acao?action=deixarDeSeguir&id_usuario_seguir=<?php echo $usuario['id'] ; ?>&pesquisarPor=<?php echo $pesquisarPor ; ?>" class="btn btn-danger">Deixar de seguir</a>
+											<?php }?>
+										</div>
+									</div>
+								</div>
+
+								
+							</div>
+						</div>
+
+						
+						
+					</div>
+				</div>
+
+			<?php }?>
+			
+
+		</div>
+	</div>
+</div>

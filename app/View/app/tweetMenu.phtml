@@ -1,0 +1,45 @@
+<?php
+
+    namespace App\View\app;
+
+?>
+
+
+<div class="col-md-3">
+
+    <div class="perfil">
+        <div class="perfilTopo">
+
+        </div>
+
+        <div class="perfilPainel">
+            
+            <div class="row mt-2 mb-2">
+                <div class="col mb-2">
+                    <span class="perfilPainelNome"><?php echo $_SESSION['nome'] ;?></span>
+                </div>
+            </div>
+
+            <div class="row mb-2">
+
+                <div class="col">
+                    <span class="perfilPainelItem">Tweets</span><br />
+                    <span class="perfilPainelItemValor"><?php echo $_SESSION['tweets'] ;?></span>
+                </div>
+
+                <div class="col">
+                    <span class="perfilPainelItem">Seguindo</span><br />
+                    <span class="perfilPainelItemValor"><?php echo $_SESSION['seguindo'] ; ?></span>
+                </div>
+
+                <div class="col">
+                    <span class="perfilPainelItem">Seguidores</span><br />
+                    <span class="perfilPainelItemValor"> <?php echo $_SESSION['seguidores'] ; ?></span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
